@@ -42,6 +42,9 @@ public class GiphyActivity extends AppCompatActivity {
     public static final String EXTRA_SIZE_LIMIT = "size_limit";
     public static final String EXTRA_SAVE_LOCATION = "save_location";
     public static final String EXTRA_USE_STICKERS = "use_stickers";
+    public static final String EXTRA_TOOLBAR_CONTAINER_BACKGROUND_COLOR = "toolbar_container_background_color";
+    public static final String EXTRA_SEARCH_VIEW_TEXT_COLOR = "search_view_text_color";
+    public static final String EXTRA_SEARCH_VIEW_HINT_TEXT_COLOR = "search_view_hint_text_color";
 
     private String saveLocation;
     private boolean useStickers;
@@ -91,6 +94,21 @@ public class GiphyActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        int toolbarBackgroundColor = getIntent().getExtras().getInt(EXTRA_TOOLBAR_CONTAINER_BACKGROUND_COLOR, -1);
+        if (toolbarBackgroundColor != -1) {
+            findViewById(R.id.toolbar_container).setBackgroundColor(toolbarBackgroundColor);
+        }
+
+        int searchViewTextColor = getIntent().getExtras().getInt(EXTRA_SEARCH_VIEW_TEXT_COLOR, -1);
+        if (searchViewTextColor != -1) {
+            searchView.setTextColor(searchViewTextColor);
+        }
+
+        int searchViewHintTextColor = getIntent().getExtras().getInt(EXTRA_SEARCH_VIEW_HINT_TEXT_COLOR, -1);
+        if (searchViewHintTextColor != -1) {
+            searchView.setHintTextColor(searchViewHintTextColor);
+        }
 
         new Handler().postDelayed(new Runnable() {
             @Override

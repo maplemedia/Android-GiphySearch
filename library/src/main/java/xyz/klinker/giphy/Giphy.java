@@ -40,6 +40,9 @@ public class Giphy {
     private int previewSize;
     private long maxFileSize;
     private boolean useStickers;
+    private int toolbarContainerBackgroundColor = -1;
+    private int searchViewTextColor = -1;
+    private int searchViewHintTextColor = -1;
 
     private Giphy(Activity activity, String apiKey) {
         this.activity = activity;
@@ -54,6 +57,9 @@ public class Giphy {
         intent.putExtra(GiphyActivity.EXTRA_SIZE_LIMIT, maxFileSize);
         intent.putExtra(GiphyActivity.EXTRA_SAVE_LOCATION, saveLocation);
         intent.putExtra(GiphyActivity.EXTRA_USE_STICKERS, useStickers);
+        intent.putExtra(GiphyActivity.EXTRA_TOOLBAR_CONTAINER_BACKGROUND_COLOR, toolbarContainerBackgroundColor);
+        intent.putExtra(GiphyActivity.EXTRA_SEARCH_VIEW_TEXT_COLOR, searchViewTextColor);
+        intent.putExtra(GiphyActivity.EXTRA_SEARCH_VIEW_HINT_TEXT_COLOR, searchViewHintTextColor);
         activity.startActivityForResult(intent, requestCode);
     }
 
@@ -87,6 +93,21 @@ public class Giphy {
 
         public Giphy.Builder useStickers(boolean useStickers) {
             giphy.useStickers = useStickers;
+            return this;
+        }
+
+        public Giphy.Builder setToolbarContainerBackgroundColor(int color) {
+            giphy.toolbarContainerBackgroundColor = color;
+            return this;
+        }
+
+        public Giphy.Builder setSearchViewTextColor(int color) {
+            giphy.searchViewTextColor = color;
+            return this;
+        }
+
+        public Giphy.Builder setSearchViewHintTextColor(int color) {
+            giphy.searchViewHintTextColor = color;
             return this;
         }
 
